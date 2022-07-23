@@ -1,13 +1,13 @@
-import type { Component } from 'solid-js'
+import { Component, onMount } from 'solid-js'
 import { Layout } from 'shared/ui/layout'
-import styles from './index.module.scss'
-import { Personal } from 'pages/personal'
+import { Scoreboard } from 'pages/scoreboard'
 
 export const App: Component = () => {
+
   return (
     <Layout>
       <Layout.Container>
-        <Personal/>
+        <Scoreboard />
 
       </Layout.Container>
     </Layout>
@@ -15,10 +15,30 @@ export const App: Component = () => {
 }
 
 
-// Todo 
-
-// win or lose state
-// 2 list of 50 players organized side to side on page - endpoint /battles returns Array<{ battleId: number, allies: Array<players>, opponents: Array<players> }>
-// player entity - do object with fields { playerId: email string, nickName: string, scores: number, isAlive: boolean, totalKills: number, deaths: number }
-// tooltip with additional player info totalKills, deaths - do with collapsible and hover effect on player
-// button to send friend request to any player
+// [
+//   '{{repeat(10)}}',
+//   {
+//     battle_id: '{{index()}}',
+//     winStatus: '{{integer(1, 2)}}',
+//     team_1: [
+//       '{{repeat(50)}}',
+//       {
+//         id: '{{email()}}',
+//         info_id: '{{index(0, 49)}}',
+//         isAlive: '{{bool()}}',
+//         score: '{{integer(0, 3000)}}',
+//         nickName: '{{firstName()}}'
+//       }
+//     ],
+//     team_2: [
+//       '{{repeat(50)}}',
+//       {
+//         id: '{{email()}}',
+//         info_id: '{{index(49, 99)}}',
+//         isAlive: '{{bool()}}',
+//         score: '{{integer(0, 3000)}}',
+//         nickName: '{{firstName()}}'
+//       }
+//     ]
+//   }
+// ]

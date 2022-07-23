@@ -1,5 +1,19 @@
 .player {
-    font-size: 2rem;
-    background-color: #2b2b2b;
-    color: #e0e0e0
+    font-size: 1rem;
+    font-weight: 100;
+    background: url('./hollowed-boxes.svg') center top;
+    color: var(--grey-300);
+    opacity: 0.94;
+
+    &_info {
+        display: grid;
+        grid-template-columns: 3fr repeat(4, 1fr);
+        gap: 1.25rem;
+        & :not(li:first-child) {
+            justify-self: center;
+        }
+        padding: 0.6rem 3rem;
+        align-items: center;
+        border-bottom: 1px solid #120f1a;
+    }
 }

@@ -4,6 +4,7 @@
     "paths": {
       "app": ["app/index.tsx"]
     },
+    "resolveJsonModule": true,
     "strict": true,
     "target": "ESNext",
     "module": "ESNext",

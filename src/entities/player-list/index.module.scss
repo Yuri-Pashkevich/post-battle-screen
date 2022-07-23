@@ -1,0 +1,21 @@
+.playerlist_heads {
+    display: grid;
+    grid-template-columns: 3fr repeat(4, 1fr);
+    gap: 1.25rem;
+    & :not(li:first-child) {
+        justify-self: center;
+    }
+    padding: 1rem 3rem;
+    background: url('./endless-constellation.svg') top;
+    align-items: center;
+    color: var(--grey-300);
+    text-transform: uppercase;
+    font-weight: 700;
+    li:first-child {
+        font-size: 1.2rem;
+    }
+}
+.playerlist_players {
+    padding: 0rem 0.2rem 0.2rem 0.2rem;
+    border-radius: 0 0 0.4rem 0.4rem;
+}

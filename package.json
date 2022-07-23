@@ -10,6 +10,7 @@
   },
   "license": "MIT",
   "devDependencies": {
+    "miragejs": "^0.1.45",
     "typescript": "^4.7.4",
     "vite": "^3.0.0",
     "vite-plugin-solid": "^2.3.0"
@@ -20,6 +21,7 @@
     "sass": "^1.53.0",
     "solid-icons": "^0.5.0",
     "solid-js": "^1.4.7",
+    "unique-names-generator": "^4.7.1",
     "vite-tsconfig-paths": "^3.5.0"
   }
 }

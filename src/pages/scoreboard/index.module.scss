@@ -1,0 +1,18 @@
+.scoreboard {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.25rem;
+    svg {
+        font-size: 1rem;
+        fill: var(--yellow-900)
+    }
+}
+
+.team_1 {
+    color: var(--yellow-800);
+}
+
+.team_2 {
+    color: var(--blue-800);
+}
+
