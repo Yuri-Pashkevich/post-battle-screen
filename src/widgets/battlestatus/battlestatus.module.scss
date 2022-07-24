@@ -1,0 +1,22 @@
+.battlestatus_info {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 2rem;
+    svg {
+        font-size: 5rem;
+        color: var(--blue-500);
+    }
+}
+.battlestatus_title {
+    font-family: "Protosans", sans-serif;
+    font-size: 4rem;
+    color: var(--yellow-600);
+    
+    text-transform: uppercase;
+}
+
+.battlestatus {
+    padding-top: 3rem;
+    min-height: 160px;
+}

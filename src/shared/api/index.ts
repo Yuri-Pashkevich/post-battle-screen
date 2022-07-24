@@ -1,9 +1,5 @@
-import { createServer } from "miragejs"
-
-const getAdditionalInfo = async () => {
-    const res = await fetch('http://localhost:3000/src/shared/api/fakeAdditionalInfoDB.json')
-    return await res.json()
-}
+import { createServer, Model, Response } from "miragejs"
+import { Setter } from "solid-js"
 
 const getBattles = async () => {
     const res = await fetch('http://localhost:3000/src/shared/api/fakeBattlesDB.json')
@@ -11,7 +7,6 @@ const getBattles = async () => {
 }
 
 const battles = await getBattles()
-const additionalInfo = await getAdditionalInfo()
 
 export const server = {
     start: () => createServer,
@@ -19,15 +14,37 @@ export const server = {
 }
 
 createServer({
+
+    models: {
+        friend: Model,
+    },
+
     routes() {
         this.namespace = "api"
+        this.get("/battleIds", () => {
+            return battles.map(({ battle_id }: any) => battle_id)
+        })
         this.get("/battles/:id", (schema, request) => {
             let id = request.params.id
-            return battles.find(({battle_id}: any) => battle_id === +id)
+            return battles.find(({ battle_id }: any) => battle_id === +id)
         }),
-        this.get("/info/:id", (schema, request) => {
+        this.post("/friends", function (schema, request) {
+            let attrs = JSON.parse(request.requestBody).friend
+            if (attrs) {
+                // @ts-ignore
+                return schema.friends.create({ friend: attrs })
+            } else {
+                return new Response(
+                    400,
+                    { some: "header" },
+                    { errors: ["friend cannot be blank"] }
+                )
+            }
+        }),
+        this.delete("/friends/:id", (schema, request) => {
             let id = request.params.id
-            return additionalInfo.find(({info_id}: any) => info_id === +id)
+            // @ts-ignore
+            return schema.friends.find(id).destroy()
         })
     }
 })
@@ -43,7 +60,8 @@ export type BattleData = {
             isAlive: boolean
             score: number
             nickName: string
-
+            frags: number
+            deaths: number
         }
     ],
     team_2: [
@@ -53,7 +71,8 @@ export type BattleData = {
             isAlive: boolean
             score: number
             nickName: string
-
+            frags: number
+            deaths: number
         }
     ]
 }
@@ -63,10 +82,29 @@ export const getBattle = async (id: number) => {
     return res.json()
 }
 
+export const getBattleIds = async () => {
+    const res = await fetch(`api/battleIds`)
+    return res.json()
+}
 
 export const showAdditionalInfo = (id: number) => {
     return async () => {
         const res = await fetch(`api/info/${id}`)
         return await res.json()
     }
+}
+
+export const addFriend = async (data: any, setDelId: Setter<number>) => {
+    const res = await fetch("api/friends", {
+        method: "POST",
+        body: JSON.stringify(data)
+    })
+    const friend = await res.json()
+    setDelId(friend.friend.id)    
+}
+
+export const removeFriend = async (id: number) => {
+    await fetch(`api/friends/${id}`, {
+        method: "DELETE"
+    })
 }

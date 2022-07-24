@@ -3,7 +3,7 @@ import { getBattle } from 'shared/api'
 import type { BattleData } from 'shared/api'
 
 
-export const scoreBoardMount = createEvent<number>()
+export const getBattlesEvent = createEvent<number>()
 
 export const getBattleFx = createEffect<number, BattleData>()
 getBattleFx.use(getBattle)
@@ -14,6 +14,6 @@ export const $battle = createStore<BattleData | null>(null)
 $battle.watch((data) => console.log(data))
 
 sample({
-    clock: scoreBoardMount,
+    clock: getBattlesEvent,
     target: getBattleFx
 })

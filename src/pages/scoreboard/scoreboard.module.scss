@@ -1,0 +1,56 @@
+.scoreboard {
+    display: flex;
+    flex-direction: column;
+}
+.scoreboard_head {
+    position: fixed;
+    display: flex;
+    flex-direction: column;
+    background: url('../../entities/player-list/endless-constellation.svg') top;
+    width: 100%;
+    top: 0;
+    z-index: 10;
+    border-bottom: 3px solid var(--blue-900);
+}
+.scoreboard_lists {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    margin-top: 274px;
+    gap: 30rem;
+    padding: 0 30px 30px;
+    svg {
+        font-size: 1rem;
+        fill: var(--yellow-900)
+    }
+}
+
+.team_1 {
+    color: var(--yellow-800);
+}
+
+.team_2 {
+    color: var(--blue-800);
+}
+
+.scoreboard_versus {
+    color: var(--yellow-900);
+    font-family: "Protosans", sans-serif;
+    font-size: 12rem;
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    top: 31rem;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    gap: 4rem;
+}
+
+.scoreboard_separator {
+    height: 60px;
+    width: 100%;
+    position: fixed;
+    top: 13.4rem;
+    z-index: 9;
+    background-color: var(--grey-900);
+}

@@ -1,12 +1,9 @@
-import styles from './index.module.scss'
+import styles from './loader.module.scss'
 
-interface LoaderProps {
-    marginTop?: string
-}
 
-export const Loader = ({ marginTop }: LoaderProps) => {
+export const Loader = () => {
     return (
-        <div class={styles.loader} style={{'margin-top': marginTop}}>
+        <div class={styles.loader}>
             <div class={styles.loading_spinner}>
                 <div class={styles.ldio}>
                     <div>
