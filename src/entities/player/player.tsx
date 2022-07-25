@@ -1,11 +1,11 @@
-import { RiOthersSwordFill } from 'solid-icons/ri'
-import { FaSolidSkullCrossbones } from 'solid-icons/fa'
-import { TiUserAdd } from 'solid-icons/ti'
-import { IoSkull } from 'solid-icons/io'
 import { createSignal, Show } from 'solid-js'
-import styles from './player.module.scss'
 import { addFriend, removeFriend } from 'shared/api'
 import { ImUserMinus } from 'solid-icons/im'
+import { TiUserAdd } from 'solid-icons/ti'
+import { IoSkull } from 'solid-icons/io'
+import { RiOthersSwordFill } from 'solid-icons/ri'
+import { FaSolidSkullCrossbones } from 'solid-icons/fa'
+import styles from './player.module.scss'
 
 
 interface PlayerProps {
