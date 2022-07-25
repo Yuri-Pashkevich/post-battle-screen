@@ -17,8 +17,9 @@ interface PlayerProps {
     deaths: number
 }
 
-export const Player = ({ nickName, score, isAlive, frags, deaths }: PlayerProps) => {
 
+export const Player = ({ nickName, score, isAlive, frags, deaths }: PlayerProps) => {
+    
     const [showStats, setShowStats] = createSignal(false)
     const [delId, setdelId] = createSignal(null)
 
@@ -37,9 +38,9 @@ export const Player = ({ nickName, score, isAlive, frags, deaths }: PlayerProps)
                     </li>
                     <li>
                         {delId() ?
-                            <ImUserMinus onClick={() => { removeFriend(delId()!); setdelId(null)}} class={styles.red}/>
+                            <ImUserMinus onClick={() => removeFriend(delId()!, setdelId)} class={styles.red}/>
                             :
-                            <TiUserAdd onClick={() => { addFriend({ friend: nickName }, setdelId) }} />
+                            <TiUserAdd onClick={() => addFriend({ friend: nickName }, setdelId) } />
                         }
                     </li>
                 </Show>

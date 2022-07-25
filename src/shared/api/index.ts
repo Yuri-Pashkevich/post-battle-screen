@@ -100,11 +100,12 @@ export const addFriend = async (data: any, setDelId: Setter<number>) => {
         body: JSON.stringify(data)
     })
     const friend = await res.json()
-    setDelId(friend.friend.id)    
+    setDelId(friend.friend.id)  
 }
 
-export const removeFriend = async (id: number) => {
+export const removeFriend = async (id: number, setDelId: Setter<null>) => {
     await fetch(`api/friends/${id}`, {
         method: "DELETE"
     })
+    setDelId(null)
 }

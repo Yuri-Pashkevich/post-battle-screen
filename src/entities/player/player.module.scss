@@ -1,7 +1,7 @@
 .player {
     font-size: 1rem;
     font-weight: 100;
-    background: url('./hollowed-boxes.svg') center top;
+    background: url('../../shared/svg/hollowed-boxes.svg') center top;
     color: var(--grey-300);
     opacity: 0.94;
 
@@ -53,4 +53,9 @@
 
 .red {
     color: var(--red)
+}
+
+
+.showfriend {
+    color: var(--white)
 }
